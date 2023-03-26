@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    body{
+      background-color: black;
+      color: white;
+    }
+    .container{
+      width: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(24, 30, 44);
+      padding: 20px;
+      border-radius: 25px;
+      display: block;
+    }
+    .container > img{
+      border-radius: 50%;
+      padding: 12px;
+      background-color: rgb(24, 50, 88) ;
+      margin-bottom: 20px;
+    }
+    .container h2{
+      font-size: 30px;
+      padding: 0;
+      margin: 0;
+    }
+    .container p{
+      text-align: justify;
+    }
+    .number{
+      display: flex;
+      justify-content: space-between;
+    }
+    .number span button{
+      border-radius: 50%;
+      padding:12px 17px;
+      background-color: rgb(24, 50, 88) ;
+      margin: 10px auto 25px;
+      font-weight: bolder;
+    }
+    .number > span > button:hover{
+      background-color: gold;
+      color: black;
+      transition: 0.5s;
+    }
+    button{
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 20px;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgb(255, 165, 0);
+    }
+    .container2{
+      display: none;
+      width: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(24, 30, 44);
+      padding: 20px;
+      border-radius: 25px;
+    }
+    .container2 > img{
+      display: block;
+      margin: auto;
+    }
+    .container2 > p{
+      display: block;
+      color: rgb(255, 165, 0);
+      background-color: rgb(24, 50, 88) ;
+      padding:5px 25px;
+      width: 150px;
+      margin:20px auto;
+      border-radius: 8px;
+    }
+    .container2 h2{
+      text-align: center;
+      font-size: 30px;
+    }
+    section{
+      text-align: center;
+      opacity: 0.5;
+      padding: 10px;
+    }
+    @media(max-width:700px){
+      .container, .container2{
+        width: 400px;
+        padding: 30px;
+      }
+      .container h2, .container2 h2{
+        font-size: 33px;
+      }
+      .container p, .container2 section{
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Rating state start -->
+
+    <div class="container">
+      <img src="images/icon-star.svg">
+      <h2>How did we do?</h2>
+      <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+      <div class="number">
+        <span><button class="btn" active>1</button></span>
+        <span><button class="btn">2</button></span>
+        <span><button class="btn">3</button></span>
+        <span><button class="btn">4</button></span>
+        <span><button class="btn">5</button></span>
+      </div>
+      <button class="submit">Submit</button>
+    </div>
+  <!-- Rating state end -->
+
+  <!-- Thank you state start -->
+  <div class="container2">
+    <img src="images/illustration-thank-you.svg" alt="">
+    <p>You selected <span id="ratenum"></span>  out of 5</p>
+    <h2>Thank you!</h2>
+    <section>We appreciate you taking the time to give a rating. If you ever need more support, 
+      don't hesitate to get in touch!</section>
+  </div>
+
+  <!-- Thank you state end -->
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Khunn Satt Ko Ko</a>.
+  </div>
+  <script>
+    let rates = document.querySelectorAll(".btn");
+    document.querySelector(".submit").onclick = function(){
+      document.querySelector(".container").style.display ="none";
+      document.querySelector(".container2").style.display = "block";
+    }
+    rates.forEach((rate) => {
+      rate.addEventListener("click", () =>{
+        rate.style.backgroundColor = "yellow";
+        document.querySelector("#ratenum").innerHTML = rate.innerHTML;
+      })
+    })
+  </script>
+</body>
+</html>
